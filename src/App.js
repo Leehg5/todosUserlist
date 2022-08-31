@@ -53,7 +53,7 @@ const App = () => {
     const getData = async () => {
       try {
         const data = await axios({
-          url: "http://localhost:4000/users",
+          url: "http://localhost:3002/users",
           method: "GET",
         });
         console.log(data.data);
@@ -96,20 +96,20 @@ const App = () => {
     // nextId.current++;
   };
 
-  const onToggle = async (id) => {
-    const data = await axios({
-      url: `http://localhost:4000/users/checked/${id}`,
-      method: "patch",
-    });
-    setUsers(data.data);
-  };
+  //const onToggle = async (id) => {
+  //  const data = await axios({
+  //    url: `http://localhost:4000/users/checked/${id}`,
+  //    method: "patch",
+  //  });
+  //  setUsers(data.data);
+  //};
 
   const onRemove = (id) => {
     if (window.confirm("정말 삭제하시겠습니까?")) {
       const removeData = async () => {
         try {
           const data = await axios({
-            url: `http://localhost:4000/users/delete/${id}`,
+            url: `http://localhost:3002/users/delete/${id}`,
             method: "DELETE",
           });
           setIsLoading(false);
@@ -134,7 +134,7 @@ const App = () => {
 
   const onUpdate = async (id, text) => {
     try {
-      const data = await axios.put(`http://localhost:4000/users/update/${id}`, {
+      const data = await axios.put(`http://localhost:3002/users/update/${id}`, {
         text: text,
       });
       setUsers((users) =>
@@ -165,10 +165,9 @@ const App = () => {
         user={user}
         users={users}
         onRemove={onRemove}
-        onToggle={onToggle}
+        //onToggle={onToggle}
         onInsertToggle={onInsertToggle}
         setSelectedTodo={setSelectedTodo}
-        style={{}}
       />
       <Footer />
     </div>

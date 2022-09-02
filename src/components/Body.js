@@ -1,13 +1,15 @@
 import React from "react";
 import { Table, Checkbox, Mask, Badge, Button } from "react-daisyui";
 import UserList from "./UserList";
+import "../styles/Body.css";
+
 const Body = ({
   user,
   users,
   onRemove,
-  onToggle,
+  onUpdate,
   onInsertToggle,
-  setSelectedTodo,
+  setSelectedUser,
 }) => {
   return (
     <div
@@ -15,42 +17,74 @@ const Body = ({
       style={{
         width: "1200px",
         height: "70vh",
+        backgroundColor: "#FCF6F5",
+        position: "relative",
       }}
     >
+      {" "}
+      <button
+        className="btn btn-info absolute"
+        style={{
+          left: "10px",
+          top: "10px",
+        }}
+      >
+        회원 추가
+      </button>
+      <input
+        type="text"
+        placeholder="검색할 이름을 입력해주세요"
+        className="input input-bordered input-info w-full max-w-xs absolute"
+        style={{
+          right: "10px",
+          top: "10px",
+        }}
+        onClick={() => {
+          // 검색기능
+        }}
+      />
       {/* <Checkbox onClick={() => {}} /> */}
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
+          padding: "20px",
+          marginTop: "70px",
+          alignItems: "center",
+          backgroundColor: "#7b9acc",
+          color: "white",
           // border: "5px red solid", rgba() 수정
         }}
       >
         <span
           style={{
-            marginRight: "30px",
-            marginLeft: "30px",
+            width: "100px",
+            textAlign: "center",
+            marginLeft: "-10px",
           }}
         >
-          Name
+          이름
         </span>
         <span
           style={{
-            marginRight: "50px",
+            marginLeft: "-20px",
           }}
         >
-          Address
+          주소
         </span>
         <span
           style={{
-            marginRight: "70px",
+            marginLeft: "40px",
+            marginRight: "10px",
           }}
         >
-          Phone
+          연락처
         </span>
         <span
           style={{
-            marginRight: "20px",
-            marginLeft: "-30px",
+            marginRight: "0px",
+
+            marginLeft: "10px",
           }}
         >
           가입날짜
@@ -65,127 +99,25 @@ const Body = ({
         <span>&nbsp;</span>
         <span
           style={{
-            marginLeft: "-10px",
+            marginLeft: "-50px",
           }}
         >
-          Edit
+          수정
         </span>
-        <span>Delete</span>
+        <span>삭제</span>
         <span>&nbsp;</span>
         <span>Read More</span>
         <span />
-        <button
-          onClick={() => {}}
-          style={{
-            border: "1px black solid",
-            borderRadius: "10%",
-            padding: "10px",
-          }}
-        >
-          {" "}
-          회원 추가
-        </button>
       </div>
       <UserList
         user={user}
         users={users}
         onRemove={onRemove}
-        onToggle={onToggle}
         onInsertToggle={onInsertToggle}
-        setSelectedTodo={setSelectedTodo}
-        style={{}}
+        setSelectedUser={setSelectedUser}
+        onUpdate={onUpdate}
       />
-
-      {/* <Checkbox />
-          <div className="flex items-center space-x-3 truncate">
-            <Mask
-              variant="squircle"
-              src="http://daisyui.com/tailwind-css-component-profile-2@56w.png"
-            />
-            <div>
-              <div className="font-bold">Hart Hagerty</div>
-              <div className="text-sm opacity-50">United States</div>
-            </div>
-          </div>
-          <div>
-            Zemlak, Daniel and Leannon
-            <br />
-            <Badge color="ghost" size="sm">
-              Desktop Support Technician
-            </Badge>
-          </div>
-          <div>Purple</div>
-          <Button color="ghost" size="xs">
-            details
-          </Button>
-          <Checkbox />
-          <div className="flex items-center space-x-3 truncate">
-            <Mask
-              variant="squircle"
-              src="http://daisyui.com/tailwind-css-component-profile-3@56w.png"
-            />
-            <div>
-              <div className="font-bold">Brice Swyre</div>
-              <div className="text-sm opacity-50">China</div>
-            </div>
-          </div>
-          <div>
-            Carrol Group
-            <br />
-            <Badge color="ghost" size="sm">
-              Tax Accountant
-            </Badge>
-          </div>
-          <div>Red</div>
-          <Button color="ghost" size="xs">
-            details
-          </Button>
-          <Checkbox />
-          <div className="flex items-center space-x-3 truncate">
-            <Mask
-              variant="squircle"
-              src="http://daisyui.com/tailwind-css-component-profile-4@56w.png"
-            />
-            <div>
-              <div className="font-bold">Marjy Ferencz</div>
-              <div className="text-sm opacity-50">Russia</div>
-            </div>
-          </div>
-          <div>
-            Rowe-Schoen
-            <br />
-            <Badge color="ghost" size="sm">
-              Office Assistant I
-            </Badge>
-          </div>
-          <div>Crimson</div>
-          <Button color="ghost" size="xs">
-            details
-          </Button>
-          <Checkbox />
-          <div className="flex items-center space-x-3 truncate">
-            <Mask
-              variant="squircle"
-              src="http://daisyui.com/tailwind-css-component-profile-5@56w.png"
-            />
-            <div>
-              <div className="font-bold">Yancy Tear</div>
-              <div className="text-sm opacity-50">Brazil</div>
-            </div>
-          </div>
-          <div>
-            Wyman-Ledner
-            <br />
-            <Badge color="ghost" size="sm">
-              Community Outreach Specialist
-            </Badge>
-          </div>
-          <div>Indigo</div>
-          <Button color="ghost" size="xs">
-            details
-          </Button> */}
     </div>
   );
 };
-
 export default Body;

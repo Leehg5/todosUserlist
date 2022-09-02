@@ -1,12 +1,11 @@
 import { useState } from "react";
 import UserListItem from "./UserListItem";
-
 const UserList = ({
   users,
   onRemove,
   onInsertToggle,
-  setSelectedTodo,
-  onToggle,
+  setSelectedUser,
+  onUpdate,
 }) => {
   return (
     <ul
@@ -21,9 +20,8 @@ const UserList = ({
           user={user}
           key={index}
           onRemove={onRemove}
-          onToggle={onToggle}
           onInsertToggle={onInsertToggle}
-          setSelectedTodo={setSelectedTodo}
+          setSelectedUser={setSelectedUser}
 
           //   handleDragStart={handleDragStart}
           //   handleDragOver={handleDragOver}
@@ -34,5 +32,4 @@ const UserList = ({
     </ul>
   );
 };
-
 export default UserList;

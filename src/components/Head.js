@@ -7,7 +7,7 @@ const Head = () => {
       <div className="con UserList">
         <div className="app-title">
           <a href="#" _blank="target">
-            User List
+            ㅁㅁㅁㅁㅁㅁ
           </a>
         </div>
         <div className="topbar_logo">
@@ -19,15 +19,15 @@ const Head = () => {
               </a>
               <a href="#" _blank="target">
                 <span></span>
-                <span>ABC</span>
+                <span>Moad</span>
               </a>
               <a href="#" _blank="target">
                 <span></span>
-                <span>DEF</span>
+                <span>By</span>
               </a>
               <a href="#" _blank="target">
                 <span></span>
-                <span>MORE</span>
+                <span>Byung hoon</span>
               </a>
             </li>
           </ul>

@@ -1,0 +1,32 @@
+.Edit {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55.5%);
+  width: 400px;
+  height: 500px;
+  background-color: antiquewhite;
+  border-radius: 20px;
+}
+.form-control {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.EditHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #8697adcc;
+  height: 50px;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  letter-spacing: 1.2px;
+  color: white;
+}
+.closeBtn {
+  position: absolute;
+  right: 3%;
+}
+.editComplete {
+  margin-top: 10px;
+}

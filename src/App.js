@@ -1,23 +1,19 @@
 import Body from "./components/Body";
 import Head from "./components/Head";
-import Footer from "./components/Footer.js";
+import Footer from "./components/Footer";
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
-import { Table, Checkbox, Mask, Badge, Button } from "react-daisyui";
-// import UserInsert from "./components/TodoInsert";
-// import UserTemplate from "./components/TodoTemplate";
-// import UserList from "./components/TodoList";
-// import UserEdit from "./components/TodoEdit";
+import UserEdit from "./components/UserEdit";
 // import Draggable from "react-draggable";
 
 const App = () => {
   const [user, setUser] = useState("");
   const [insertToggle, setInsertToggle] = useState(false);
-  const [selectedTodo, setSelectedTodo] = useState(null);
+  const [selectedUser, setSelectedUser] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [users, setUsers] = useState([]);
-  const [numbers, setNumbers] = useState(0);
+
   // const handleDragStart = (e, user) => {
   //   e.dataTransfer.effectAllowed = "move";
   //   e.dataTransfer.setData("tmp", JSON.stringify(user));
@@ -56,7 +52,7 @@ const App = () => {
           url: "http://localhost:3002/users",
           method: "GET",
         });
-        console.log(data.data);
+
         setUsers(data.data);
         setIsLoading(false);
         await new Promise((resolve, reject) => {
@@ -93,16 +89,7 @@ const App = () => {
     } catch (e) {
       setError(e);
     }
-    // nextId.current++;
   };
-
-  //const onToggle = async (id) => {
-  //  const data = await axios({
-  //    url: `http://localhost:4000/users/checked/${id}`,
-  //    method: "patch",
-  //  });
-  //  setUsers(data.data);
-  //};
 
   const onRemove = (id) => {
     if (window.confirm("정말 삭제하시겠습니까?")) {
@@ -132,20 +119,24 @@ const App = () => {
     setInsertToggle((prev) => !prev);
   };
 
-  const onUpdate = async (id, text) => {
+  const onUpdate = async (
+    id,
+    nameValue,
+    addressValue,
+    phoneValue,
+    featureValue
+  ) => {
     try {
-      const data = await axios.put(`http://localhost:3002/users/update/${id}`, {
-        text: text,
-      });
-      setUsers((users) =>
-        users.map((user) => (user.id === id ? { ...user, text } : user))
+      const data = await axios.patch(
+        `http://localhost:3002/users/update/${id}`,
+        {
+          name: nameValue,
+          address: addressValue,
+          phone: phoneValue,
+          feature: featureValue,
+        }
       );
       setUsers(data.data);
-      // await new Promise((resolve, reject) => {
-      //   setTimeout(() => {
-      //     resolve();
-      //   }, 3000);
-      // });
     } catch (e) {
       setError(e);
     }
@@ -165,10 +156,20 @@ const App = () => {
         user={user}
         users={users}
         onRemove={onRemove}
-        //onToggle={onToggle}
         onInsertToggle={onInsertToggle}
-        setSelectedTodo={setSelectedTodo}
+        setSelectedUser={setSelectedUser}
+        onUpdate={onUpdate}
       />
+      {insertToggle && (
+        <UserEdit
+          user={user}
+          users={users}
+          onRemove={onRemove}
+          onInsertToggle={onInsertToggle}
+          selectedUser={selectedUser}
+          onUpdate={onUpdate}
+        />
+      )}
       <Footer />
     </div>
   );

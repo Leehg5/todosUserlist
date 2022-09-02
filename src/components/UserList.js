@@ -6,6 +6,8 @@ const UserList = ({
   onInsertToggle,
   setSelectedUser,
   onUpdate,
+  onInsert,
+  onAddToggle,
 }) => {
   return (
     <ul
@@ -22,6 +24,7 @@ const UserList = ({
           onRemove={onRemove}
           onInsertToggle={onInsertToggle}
           setSelectedUser={setSelectedUser}
+          onAddToggle={onAddToggle}
 
           //   handleDragStart={handleDragStart}
           //   handleDragOver={handleDragOver}

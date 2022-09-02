@@ -1,14 +1,16 @@
 import Body from "./components/Body";
 import Head from "./components/Head";
 import Footer from "./components/Footer";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UserEdit from "./components/UserEdit";
+import UserAdd from "./components/UserAdd";
 // import Draggable from "react-draggable";
 
 const App = () => {
   const [user, setUser] = useState("");
   const [insertToggle, setInsertToggle] = useState(false);
+  const [addToggle, setAddToggle] = useState(false);
   const [selectedUser, setSelectedUser] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -73,18 +75,19 @@ const App = () => {
     return <>Loading...</>;
   }
 
-  const onInsert = async (text) => {
+  const onInsert = async (
+    nameValue,
+    addressValue,
+    phoneValue,
+    featureValue
+  ) => {
     try {
-      const data = await axios.post(`http://localhost:4000/users/add`, {
-        text: text,
+      const data = await axios.post(`http://localhost:3002/users/add`, {
+        name: nameValue,
+        address: addressValue,
+        phone: phoneValue,
+        feature: featureValue,
       });
-
-      // setIsLoading(false);
-      //   await new Promise((resolve, reject) => {
-      //     setTimeout(() => {
-      //       resolve();
-      //     }, 3000);
-      // });
       setUsers(data.data);
     } catch (e) {
       setError(e);
@@ -118,6 +121,9 @@ const App = () => {
   const onInsertToggle = () => {
     setInsertToggle((prev) => !prev);
   };
+  const onAddToggle = () => {
+    setAddToggle((prev) => !prev);
+  };
 
   const onUpdate = async (
     id,
@@ -149,16 +155,22 @@ const App = () => {
     }
   };
 
+  const onSearch = (name) => {
+    // 검색 쿼리 orderby or where name 등으로 해보고 정렬하기.
+  };
   return (
     <div>
       <Head />
       <Body
         user={user}
         users={users}
+        onInsert={onInsert}
         onRemove={onRemove}
         onInsertToggle={onInsertToggle}
+        onAddToggle={onAddToggle}
         setSelectedUser={setSelectedUser}
         onUpdate={onUpdate}
+        onSearch={onSearch}
       />
       {insertToggle && (
         <UserEdit
@@ -168,6 +180,15 @@ const App = () => {
           onInsertToggle={onInsertToggle}
           selectedUser={selectedUser}
           onUpdate={onUpdate}
+        />
+      )}
+      {addToggle && (
+        <UserAdd
+          user={user}
+          users={users}
+          onInsert={onInsert}
+          onAddToggle={onAddToggle}
+          selectedUser={selectedUser}
         />
       )}
       <Footer />

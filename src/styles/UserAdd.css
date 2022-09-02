@@ -1,0 +1,35 @@
+.Add {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55.5%);
+  width: 400px;
+  height: 500px;
+  background-color: rgb(236, 237, 248);
+  border: 3px solid rgba(25, 46, 165, 0.596);
+}
+.form-control {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.AddHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eaeaf3cc;
+  height: 50px;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  letter-spacing: 1.2px;
+  color: rgba(25, 46, 165, 0.596);
+}
+.line {
+  border: 1px rgb(36, 17, 122) solid;
+}
+.closeBtn {
+  position: absolute;
+  right: 3%;
+}
+.AddComplete {
+  margin-top: 10px;
+}

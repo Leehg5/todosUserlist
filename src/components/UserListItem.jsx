@@ -1,10 +1,4 @@
-import cn from "classnames";
-import {
-  MdCheckBoxOutlineBlank,
-  MdRemoveCircleOutline,
-  MdCheckBox,
-  MdModeEditOutline,
-} from "react-icons/md";
+import { MdRemoveCircleOutline, MdModeEditOutline } from "react-icons/md";
 
 const UserListItem = ({ user, onInsertToggle, setSelectedUser, onRemove }) => {
   const { id, regDate, name, phone, address, feature } = user;
